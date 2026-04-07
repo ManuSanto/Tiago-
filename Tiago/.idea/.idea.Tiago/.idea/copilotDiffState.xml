@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/Assets/Editor/BootSceneLoader.cs">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Assets/Editor/BootSceneLoader.cs" />
+              <option name="updatedContent" value="using UnityEditor.SceneManagement;&#10;using UnityEditor;&#10;using UnityEngine.SceneManagement;&#10;&#10;[InitializeOnLoad]&#10;public class BootSceneLoader&#10;{&#10;    private static string bootScenePath = &quot;Assets/Scenes/_Boot.unity&quot;;&#10;    private static string initialScenePath;&#10;    private static bool isLoadingBootScene = false;&#10;&#10;    static BootSceneLoader()&#10;    {&#10;        EditorApplication.playModeStateChanged += OnPlayModeStateChanged;&#10;    }&#10;&#10;    private static void OnPlayModeStateChanged(PlayModeStateChange state)&#10;    {&#10;        if (state == PlayModeStateChange.ExitingEditMode)&#10;        {&#10;            // Salvar a cena atualmente aberta&#10;            Scene activeScene = SceneManager.GetActiveScene();&#10;            initialScenePath = activeScene.path;&#10;&#10;            // Carregar a cena de boot&#10;            isLoadingBootScene = true;&#10;            EditorSceneManager.LoadScene(bootScenePath, LoadSceneMode.Single);&#10;        }&#10;        else if (state == PlayModeStateChange.EnteredPlayMode)&#10;        {&#10;            // Aguardar um frame para garantir que a cena de boot foi carregada&#10;            EditorApplication.update -= LoadInitialSceneOnPlayMode;&#10;            EditorApplication.update += LoadInitialSceneOnPlayMode;&#10;        }&#10;        else if (state == PlayModeStateChange.ExitingPlayMode)&#10;        {&#10;            EditorApplication.update -= LoadInitialSceneOnPlayMode;&#10;        }&#10;    }&#10;&#10;    private static void LoadInitialSceneOnPlayMode()&#10;    {&#10;        if (!isLoadingBootScene)&#10;            return;&#10;&#10;        isLoadingBootScene = false;&#10;        EditorApplication.update -= LoadInitialSceneOnPlayMode;&#10;&#10;        // Carregar a cena inicial aditivamente&#10;        EditorSceneManager.LoadScene(initialScenePath, LoadSceneMode.Additive);&#10;&#10;        // Descarregar a cena de boot após a cena inicial ser carregada&#10;        Scene bootScene = SceneManager.GetSceneByPath(bootScenePath);&#10;        if (bootScene.isLoaded)&#10;        {&#10;            EditorSceneManager.UnloadSceneAsync(bootScene);&#10;        }&#10;    }&#10;}&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
