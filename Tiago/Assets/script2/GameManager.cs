@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // Escuta quando a cena muda
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -32,9 +35,25 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SetState(GameState.Iniciando);
+        LoadScene("splash");
+    }
+
+    // Chamado automaticamente quando uma cena carrega
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Cena carregada: " + scene.name);
+
+        if (scene.name == "splash")
         {
             SetState(GameState.Iniciando);
-            LoadScene("splash");
+        }
+        else if (scene.name == "Menu")
+        {
+            SetState(GameState.MenuPrincipal);
+        }
+        else if (scene.name == "GetStarted_Scene")
+        {
+            SetState(GameState.Gameplay);
         }
     }
 
@@ -48,12 +67,6 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-
-        // Atualiza estado baseado na cena
-        if (sceneName == "MenuPrincipal")
-            SetState(GameState.MenuPrincipal);
-        else if (sceneName == "GetStarted_Scene")
-            SetState(GameState.Gameplay);
     }
 
     // Input allocation (simples)
@@ -61,6 +74,5 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Input atribuído ao jogador: " + playerInput.name);
     }
-
-   
+    
 }
