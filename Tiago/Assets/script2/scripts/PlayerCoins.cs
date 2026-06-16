@@ -4,15 +4,11 @@ public class PlayerCoins : MonoBehaviour
 {
     private int coins = 0;
 
-    private void OnTriggerEnter(Collider other)
+    public void CollectCoin()
     {
-        if (other.CompareTag("Coin"))
-        {
-            coins++;
+        coins++;
 
-            PlayerObserverManager.NotifyCoinCollected(coins);
-
-            Destroy(other.gameObject);
-        }
+        PlayerObserverManager.NotifyCoinsChanged(coins);
     }
 }
+

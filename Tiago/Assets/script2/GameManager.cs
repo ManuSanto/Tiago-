@@ -64,9 +64,9 @@ public class GameManager : MonoBehaviour
     }
 
     // Controle de cenas (SÓ o GameManager pode fazer isso)
-    public void LoadScene(string sceneName)
+    public void LoadScene(Gameplay)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(GUI, LoadSceneMode.Additive);
     }
 
     // Input allocation (simples)

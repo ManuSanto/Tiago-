@@ -3,20 +3,21 @@ using UnityEngine;
 
 public class CoinUI : MonoBehaviour
 {
-    public TextMeshProUGUI coinText;
+    [SerializeField]
+    private TextMeshProUGUI coinText;
 
     private void OnEnable()
     {
-        PlayerObserverManager.OnCoinCollected += UpdateCoins;
+        PlayerObserverManager.OnCoinsChanged += UpdateCoins;
     }
 
     private void OnDisable()
     {
-        PlayerObserverManager.OnCoinCollected -= UpdateCoins;
+        PlayerObserverManager.OnCoinsChanged -= UpdateCoins;
     }
 
-    private void UpdateCoins(int coins)
+    private void UpdateCoins(int amount)
     {
-        coinText.text = "Moedas: " + coins;
+        coinText.text = "Moedas: " + amount;
     }
 }
