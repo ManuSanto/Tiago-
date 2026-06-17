@@ -13,21 +13,23 @@ public class GameManager : MonoBehaviour
         Gameplay
     }
 
-    public GameState CurrentState { get; private set; }
+    public GameState currentState;
 
     private void Awake()
     {
         // Singleton
-        if (Instance != null && Instance != this)
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            // Escuta quando a cena muda
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
@@ -36,51 +38,43 @@ public class GameManager : MonoBehaviour
         LoadScene("splash");
     }
 
-    private void OnDestroy()
+    // Chamado automaticamente quando uma cena carrega
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+        Debug.Log("Cena carregada: " + scene.name);
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        Debug.Log($"Cena carregada: {scene.name}");
-
-        switch (scene.name)
+        if (scene.name == "splash")
         {
-            case "splash":
-                SetState(GameState.Iniciando);
-                break;
+            SetState(GameState.Iniciando);
+        }
+        else if (scene.name == "Menu")
+        {
+            SetState(GameState.MenuPrincipal);
+        }
+        else if (scene.name == "GetStarted_Scene")
+        {
+            SetState(GameState.Gameplay);
 
-            case "Menu":
-                SetState(GameState.MenuPrincipal);
-                break;
-
-            case "GetStarted_Scene":
-                SetState(GameState.Gameplay);
-                break;
+            SceneManager.LoadScene("GUI", LoadSceneMode.Additive);
         }
     }
 
     public void SetState(GameState newState)
     {
-        CurrentState = newState;
-        Debug.Log($"Estado atual: {CurrentState}");
+        currentState = newState;
+        Debug.Log("Estado atual: " + currentState);
     }
 
-    // Apenas o GameManager troca de cena
+    // Controle de cenas (SÓ o GameManager pode fazer isso)
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 
-    // Caso queira carregar de forma aditiva
-    public void LoadSceneAdditive(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-    }
-
+    // Input allocation (simples)
     public void SetupPlayerInput(PlayerInput playerInput)
     {
-        Debug.Log($"Input atribuído ao jogador: {playerInput.name}");
+        Debug.Log("Input atribuído ao jogador: " + playerInput.name);
     }
+    
 }
