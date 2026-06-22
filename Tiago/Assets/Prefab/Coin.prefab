@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1010788915232292375}
   - component: {fileID: 5784562066488699051}
   - component: {fileID: 5594451812658119207}
+  - component: {fileID: 2551719420482982387}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3579625860933686330}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7169859, y: 0.0045512114, z: 0.00442472, w: 0.69705886}
+  m_LocalRotation: {x: -0.71698135, y: 0.0045488323, z: 0.004422464, w: 0.6970635}
   m_LocalPosition: {x: -0.025, y: 0.867, z: 0}
   m_LocalScale: {x: 0.5, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -114,3 +115,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &2551719420482982387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579625860933686330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23a6fe451660b047a761fd0cc9becbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Coin

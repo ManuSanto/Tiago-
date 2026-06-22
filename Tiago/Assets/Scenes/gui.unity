@@ -131,10 +131,9 @@ GameObject:
   - component: {fileID: 1038656336}
   - component: {fileID: 1038656335}
   - component: {fileID: 1038656334}
-  - component: {fileID: 1038656333}
   - component: {fileID: 1038656337}
   m_Layer: 5
-  m_Name: 'Moedas: 0'
+  m_Name: 'Moedas:'
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,18 +158,6 @@ RectTransform:
   m_AnchoredPosition: {x: -452, y: 12}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1038656333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1038656331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a23a6fe451660b047a761fd0cc9becbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Coin
 --- !u!135 &1038656334
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -304,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef6bc38cb62cbf459b04070df294273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinUI
-  coinText: {fileID: 0}
+  coinText: {fileID: 1038656335}
 --- !u!1 &1526655985
 GameObject:
   m_ObjectHideFlags: 0

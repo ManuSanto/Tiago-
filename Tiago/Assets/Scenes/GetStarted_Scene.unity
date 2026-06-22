@@ -152,23 +152,6 @@ Transform:
   - {fileID: 543450653404741517}
   m_Father: {fileID: 1491852254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &268059109 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3579625860933686330, guid: ecb9be4f8fde3b8428c47b573e4966a9, type: 3}
-  m_PrefabInstance: {fileID: 1434130906}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &268059110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268059109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a23a6fe451660b047a761fd0cc9becbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Coin
 --- !u!1001 &390712444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1377,13 +1360,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 5784562066488699051, guid: ecb9be4f8fde3b8428c47b573e4966a9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4adec1c6cb9828545bcd4b50263f1601, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3579625860933686330, guid: ecb9be4f8fde3b8428c47b573e4966a9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 268059110}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecb9be4f8fde3b8428c47b573e4966a9, type: 3}
 --- !u!1 &1467541520
 GameObject:

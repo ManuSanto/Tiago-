@@ -22,4 +22,3 @@ public class CoinUI : MonoBehaviour
         coinText.text = "Moedas: " + amount;
     }
 }
-
