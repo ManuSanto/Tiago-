@@ -20,7 +20,8 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
-
+    privat PlayrInput plerInput;
+    privat GameImput
 
 #if ENABLE_INPUT_SYSTEM
 		
